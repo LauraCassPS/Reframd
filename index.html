@@ -1,0 +1,1230 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<link rel="icon" type="image/png" href="images/reframd-favicon.png" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Reframd — Wireframe Explorations</title>
+<link rel="stylesheet" href="styles/base.css" />
+<link rel="stylesheet" href="styles/d1-classic.css" />
+<link rel="stylesheet" href="styles/d2-asymmetric.css" />
+<link rel="stylesheet" href="styles/d3-essay.css" />
+<style>
+/* ============================================================
+   MOBILE RESPONSIVE — all breakpoints in one place
+   @media (max-width: 768px) covers tablets and phones
+   @media (max-width: 480px) covers small phones
+   ============================================================ */
+
+/* ---- Hamburger: hide on desktop, show on mobile ---- */
+.d2-nav-toggle { display: none; }
+
+@media (max-width: 768px) {
+
+  /* Global */
+  img { max-width: 100%; height: auto; }
+  .btn { min-height: 44px; padding: 12px 20px; }
+  .chrome {
+    top: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+  }
+  .chrome button { padding: 7px 11px; }
+
+  /* ---- D2 Header & hamburger ---- */
+  .d2-side {
+    height: auto;
+    min-height: 72px;
+    padding: 14px 24px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .d2-side .logo-ph {
+    width: 120px !important;
+    height: 60px !important;
+  }
+  .d2-nav-toggle {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    margin-left: auto;
+    min-height: 44px;
+    min-width: 44px;
+    align-items: center;
+  }
+  .d2-nav-toggle span {
+    display: block;
+    width: 22px;
+    height: 1.5px;
+    background: var(--ink);
+  }
+  .d2-side .anchors {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    gap: 0;
+    padding: 12px 0 8px;
+    border-top: 1px solid rgba(39,45,30,0.1);
+    margin-top: 8px;
+  }
+  .d2-side .anchors.is-open { display: flex; }
+  .d2-side .anchors a {
+    padding: 13px 0;
+    font-size: 12px;
+    border-bottom: 1px solid rgba(39,45,30,0.07);
+  }
+  .d2 section[id] { scroll-margin-top: 90px; }
+
+  /* ---- D2 Hero ---- */
+  .d2-hero {
+    grid-template-columns: 1fr !important;
+    padding: 100px 24px 48px !important;
+    min-height: auto !important;
+    gap: 32px;
+  }
+  .d2-hero h1 {
+    font-size: clamp(36px, 10vw, 64px) !important;
+    margin: 16px 0;
+  }
+  .d2-hero .portrait-wrap {
+    height: 72vw;
+    min-height: 260px;
+    align-self: auto;
+  }
+  .d2-hero.typo { padding: 100px 24px 48px !important; }
+  .d2-hero.typo h1 { font-size: clamp(44px, 12vw, 88px) !important; }
+
+  /* ---- D2 About short ---- */
+  .d2-about-short { padding: 72px 24px !important; }
+  .d2-about-short .inner { grid-template-columns: 1fr !important; gap: 40px; }
+
+  /* ---- D2 Problem ---- */
+  .d2-problem { padding: 72px 24px 56px !important; }
+  .d2-problem h2 { font-size: clamp(32px, 8vw, 64px) !important; margin-bottom: 40px; }
+  .d2-problem .body { grid-template-columns: 1fr !important; gap: 0; }
+  .d2-problem .pull { font-size: clamp(20px, 5vw, 32px) !important; padding-top: 36px; }
+
+  /* ---- D2 How we work ---- */
+  .d2-how { padding: 72px 0 !important; }
+  .d2-how .head { padding: 0 24px; margin-bottom: 40px; }
+  .d2-how h2 { font-size: clamp(32px, 8vw, 64px) !important; }
+  .d2-how .steps { grid-template-columns: 1fr !important; }
+  .d2-how .step { min-height: auto !important; }
+  .d2-how .cta-row { padding: 0 24px; margin-top: 48px; }
+
+  /* ---- D2 Services ---- */
+  .d2-services { padding: 72px 24px !important; }
+  .d2-services h2 { font-size: clamp(32px, 8vw, 64px) !important; }
+  .d2-services .item {
+    display: flex !important;
+    flex-direction: column;
+    gap: 10px;
+    padding: 28px 0;
+  }
+  .d2-services .item .img-ph { display: none !important; }
+  .d2-services .item h3 { font-size: clamp(22px, 6vw, 38px) !important; }
+
+  /* ---- D2 Testimonial ---- */
+  .d2-testimonial { padding: 72px 24px !important; }
+  .d2-testimonial .inner { grid-template-columns: 1fr !important; gap: 20px; }
+  .d2-testimonial blockquote { font-size: clamp(22px, 5vw, 36px) !important; }
+
+  /* ---- D2 About full ---- */
+  .d2-about-full { padding: 72px 24px !important; }
+  .d2-about-full .inner { grid-template-columns: 1fr !important; gap: 40px; }
+  .d2-about-full h2 { font-size: clamp(32px, 8vw, 64px) !important; }
+  .d2-about-full .stats { grid-template-columns: 1fr 1fr !important; }
+  .d2-about-full .stat .num { font-size: 38px !important; }
+
+  /* ---- D2 Event ---- */
+  .d2-event { padding: 72px 24px !important; }
+  .d2-event::before { inset: 10px; }
+  .d2-event .inner { grid-template-columns: 1fr !important; gap: 40px; }
+  .d2-event h2 { font-size: clamp(28px, 7vw, 56px) !important; }
+  .d2-event .where-when { grid-template-columns: 1fr 1fr !important; gap: 20px 28px; }
+
+  /* ---- D2 FAQ ---- */
+  .d2-faq { padding: 72px 24px !important; }
+  .d2-faq .head { grid-template-columns: 1fr !important; gap: 20px; margin-bottom: 40px; }
+  .d2-faq h2 { font-size: clamp(32px, 8vw, 64px) !important; }
+
+  /* ---- D2 Contact / merged section ---- */
+  .d2-contact { padding: 72px 24px !important; }
+  .d2-contact .inner { grid-template-columns: 1fr !important; gap: 40px; }
+  .d2-contact h2 { font-size: clamp(28px, 7vw, 56px) !important; }
+  .d2-contact .contact-submit { width: 100%; justify-content: center; min-height: 48px; }
+  .d2-final-merge h2.final-h2 { font-size: clamp(44px, 11vw, 88px) !important; }
+  .d2-final-merge h2:not(.final-h2) { font-size: clamp(28px, 7vw, 52px) !important; }
+  .d2-final-merge .contact-form-wrap { max-width: 100%; }
+
+  /* ---- D2 Footer ---- */
+  .d2-footer { padding: 32px 24px !important; gap: 20px; }
+  .d2-footer .footer-logo { width: 120px !important; height: 60px !important; }
+  .d2-footer .footer-nav { flex-wrap: wrap; justify-content: center; gap: 12px 20px; }
+  .d2-footer .footer-bottom { flex-wrap: wrap; justify-content: center; gap: 8px; }
+
+  /* ---- D1 Masthead ---- */
+  .d1-mast { grid-template-columns: 1fr !important; padding: 20px 24px; text-align: center; }
+  .d1-mast .left { display: none; }
+  .d1-mast .logo { justify-self: center; }
+  .d1-mast .right { justify-content: center; flex-wrap: wrap; gap: 12px 20px; }
+  .d1-sub-mast { padding: 8px 24px; flex-direction: column; gap: 4px; }
+  .d1-hero { height: 80vw; min-height: 320px; }
+  .d1-hero .headline-overlay { grid-template-columns: 1fr !important; left: 24px; right: 24px; bottom: 28px; gap: 16px; }
+  .d1-hero .headline-overlay h1 { font-size: clamp(32px, 8vw, 64px) !important; }
+  .d1-hero .meta { display: none; }
+  .d1-hero.split { grid-template-columns: 1fr !important; height: auto; }
+  .d1-hero.split .portrait { height: 72vw; min-height: 260px; position: relative; inset: auto; }
+  .d1-hero.split .copy { padding: 40px 24px; }
+  .d1-hero.split .copy h1 { font-size: clamp(32px, 8vw, 56px) !important; }
+  .d1-hero.typo { padding: 80px 24px 48px !important; }
+  .d1-hero.typo h1 { font-size: clamp(40px, 10vw, 72px) !important; }
+  .d1-band { grid-template-columns: 1fr !important; padding: 56px 24px; gap: 24px; }
+  .d1-about-short { grid-template-columns: 1fr !important; padding: 64px 24px !important; gap: 40px; }
+  .d1-essay { padding: 64px 24px !important; }
+  .d1-essay h2 { font-size: clamp(28px, 7vw, 56px) !important; margin-bottom: 40px; }
+  .d1-essay .cols { column-count: 1 !important; }
+  .d1-how { padding: 64px 24px !important; }
+  .d1-how h2 { font-size: clamp(28px, 7vw, 56px) !important; margin-bottom: 48px; }
+  .d1-how .steps { grid-template-columns: 1fr !important; gap: 32px; }
+  .d1-services { padding: 64px 24px !important; }
+  .d1-services h2 { font-size: clamp(28px, 7vw, 56px) !important; margin-bottom: 48px; }
+  .d1-services .item { grid-template-columns: 40px 1fr !important; grid-template-rows: auto auto; gap: 12px 16px; padding: 28px 0; }
+  .d1-services .item h3 { font-size: clamp(20px, 5vw, 30px) !important; }
+  .d1-services .item p { grid-column: 2; grid-row: 2; }
+  .d1-services .item .arrow { display: none; }
+  .d1-about-full { grid-template-columns: 1fr !important; padding: 64px 24px !important; gap: 40px; }
+  .d1-about-full .img-ph { position: static; aspect-ratio: 4/3; }
+  .d1-testimonial { padding: 72px 24px !important; }
+  .d1-testimonial blockquote { font-size: clamp(20px, 5vw, 30px) !important; }
+  .d1-event { padding: 64px 24px !important; }
+  .d1-event .inner { grid-template-columns: 1fr !important; gap: 40px; }
+  .d1-event h2 { font-size: clamp(26px, 7vw, 48px) !important; }
+  .d1-faq { padding: 64px 24px !important; }
+  .d1-faq h2 { font-size: clamp(28px, 7vw, 56px) !important; margin-bottom: 40px; }
+  .d1-final { padding: 72px 24px !important; }
+  .d1-final h2 { font-size: clamp(36px, 9vw, 72px) !important; }
+  .d1-footer { padding: 24px !important; flex-direction: column; gap: 12px; text-align: center; }
+
+  /* ---- D3 Nav ---- */
+  .d3-nav { grid-template-columns: 1fr auto !important; padding: 16px 24px; }
+  .d3-nav .links { display: none; }
+  .d3-nav .cta { grid-column: 2; font-size: 9px; }
+  .d3-hero { height: 80vw !important; min-height: 320px !important; }
+  .d3-hero h1 { font-size: clamp(32px, 8vw, 64px) !important; left: 24px; right: 24px; bottom: 56px; }
+  .d3-hero .foot { left: 24px; right: 24px; }
+  .d3-hero .chapter-mark { left: 24px; }
+  .d3-hero.split { grid-template-columns: 1fr !important; height: auto !important; min-height: auto !important; }
+  .d3-hero.split .portrait { height: 72vw; min-height: 260px; }
+  .d3-hero.split .right { padding: 40px 24px; }
+  .d3-hero.split h1 { font-size: clamp(32px, 8vw, 56px) !important; }
+  .d3-hero.typo { padding: 80px 24px 48px !important; min-height: auto !important; }
+  .d3-hero.typo h1 { font-size: clamp(44px, 11vw, 80px) !important; }
+  .d3-chapter { padding: 64px 24px 28px; }
+  .d3-chapter .number { font-size: 56px; }
+  .d3-chapter h2 { font-size: clamp(24px, 6vw, 40px) !important; }
+  .d3-about-short { padding: 32px 24px 64px; }
+  .d3-about-short .img-ph { width: 160px; height: 200px; }
+  .d3-problem { padding: 24px 24px 64px; }
+  .d3-problem .lede { font-size: clamp(20px, 5vw, 32px) !important; margin-bottom: 36px; }
+  .d3-how { padding: 24px 24px 64px; }
+  .d3-how .step { grid-template-columns: 1fr !important; gap: 12px; }
+  .d3-how .step .num { font-size: 44px; }
+  .d3-services { padding: 24px 24px 64px; }
+  .d3-services .grid { grid-template-columns: 1fr !important; }
+  .d3-testimonial { padding: 64px 24px; }
+  .d3-testimonial blockquote { font-size: clamp(22px, 5vw, 34px) !important; }
+  .d3-about-full .portrait-row { grid-template-columns: 1fr !important; margin: 36px 0; }
+  .d3-about-full .portrait-row .img-ph:last-child { display: none; }
+  .d3-event { padding: 64px 24px; }
+  .d3-event h2 { font-size: clamp(28px, 7vw, 52px) !important; }
+  .d3-event .where-when { gap: 28px 40px; }
+  .d3-faq { padding: 24px 24px 64px; }
+  .d3-final { padding: 72px 24px; }
+  .d3-final h2 { font-size: clamp(36px, 9vw, 72px) !important; }
+  .d3-footer { padding: 24px !important; flex-direction: column; gap: 12px; text-align: center; }
+}
+
+@media (max-width: 480px) {
+  .d2-hero h1 { font-size: clamp(32px, 10vw, 52px) !important; }
+  .d2-problem h2 { font-size: clamp(28px, 9vw, 48px) !important; }
+  .d2-final-merge h2.final-h2 { font-size: clamp(36px, 11vw, 64px) !important; }
+  .d2-about-full .stats { grid-template-columns: 1fr !important; }
+  .d2-event .where-when { grid-template-columns: 1fr !important; }
+}
+</style>
+</head>
+<body>
+
+<!-- Hero tweaks panel -->
+<div class="hero-tweaks" id="heroTweaks">
+  <div class="label">Hero treatment</div>
+  <div class="opts">
+    <button data-hero-variant="overlay" class="active">Overlay</button>
+    <button data-hero-variant="split">Split</button>
+    <button data-hero-variant="typo">Typographic</button>
+  </div>
+</div>
+
+<!-- DIRECTION 1 — REMOVED -->
+<section class="direction d1" data-direction="1" data-screen-label="D1 Classic Editorial" style="display:none!important">
+
+  <!-- Masthead -->
+  <header class="d1-mast">
+    <div class="left">
+      <span>Est. MMXXIV</span>
+      <span>Copenhagen · Global</span>
+    </div>
+    <div class="logo"><img src="images/reframd-logo-olive.png" alt="Reframd"></div>
+    <nav class="right">
+      <a href="#d1-about">About</a>
+      <a href="#d1-work">Approach</a>
+      <a href="#d1-services">Services</a>
+      <a href="#d1-event">Meetup</a>
+      <a href="#d1-final">Contact</a>
+    </nav>
+  </header>
+  <div class="d1-sub-mast">
+    <span>Vol. 01 — Leadership from the inside out</span>
+    <span>A practice by Rowena Doyle</span>
+  </div>
+
+  <!-- HERO -->
+  <section class="d1-hero" data-hero>
+    <div class="portrait img-ph dark"><img src="images/hero-reframd.png" alt="Reframd workspace" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"></div>
+    <div class="vignette"></div>
+    <div class="issue-tag">№ 01 / Hero</div>
+    <div class="headline-overlay">
+      <h1>
+        Leadership<br/>
+        that starts<br/>
+        <span class="italic">from the inside out.</span>
+      </h1>
+      <div class="meta">
+        <div>Feature · Opening</div>
+        <div>Read time — 8 min</div>
+        <div>Scroll to enter</div>
+      </div>
+    </div>
+    <div class="scroll-cue">Scroll</div>
+  </section>
+
+  <!-- Subhead band -->
+  <section class="d1-band reveal">
+    <span class="eyebrow">A note from Rowena</span>
+    <div>
+      <p>Most leadership challenges aren't strategic. They're human. Reframd designs experience-led development that helps leaders understand themselves better, communicate more clearly, and bring out the best in the people around them.</p>
+      <div class="cta-row">
+        <a class="btn" href="#d1-final">Start a conversation <span class="arrow">→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- About short -->
+  <section class="d1-about-short reveal" id="d1-about">
+    <div class="img-ph ochre" style="aspect-ratio: 4/5;"><img src="images/brief-into-reframd-rowena-doyle.png" alt="Rowena Doyle" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"></div>
+    <div class="text">
+      <span class="eyebrow">Chapter One · The Practice</span>
+      <h2>I'm Rowena Doyle.</h2>
+      <p>I've spent 15 years developing leaders inside global organisations, and what I've learned is that the best leaders aren't the most technically brilliant. They're the ones who understand themselves well enough to lead others.</p>
+      <p>That's what Reframd is built on.</p>
+      <div class="signature">— Rowena</div>
+    </div>
+  </section>
+
+  <!-- Marquee -->
+  <section class="d1-marquee" aria-hidden="true">
+    <div class="track">
+      <span>Self-awareness</span><span class="dot"></span>
+      <span class="italic">Real conversations</span><span class="dot"></span>
+      <span>Capability that lasts</span><span class="dot"></span>
+      <span class="italic">Leadership from the inside out</span><span class="dot"></span>
+      <span>Self-awareness</span><span class="dot"></span>
+      <span class="italic">Real conversations</span><span class="dot"></span>
+      <span>Capability that lasts</span><span class="dot"></span>
+      <span class="italic">Leadership from the inside out</span><span class="dot"></span>
+    </div>
+  </section>
+
+  <!-- Problem + Outcome -->
+  <section class="d1-essay reveal">
+    <div class="inner">
+      <span class="eyebrow">Feature · 02</span>
+      <h2>The challenge isn't what to do. <span class="italic">It's the human part.</span></h2>
+      <div class="cols">
+        <p>Most experienced leaders have the knowledge. They've navigated growth, managed change, delivered results. But at a certain point the work becomes less about strategy and more about people.</p>
+        <p>How you communicate. How you show up under pressure. How your team functions, or doesn't. How you lead when there's no clear answer.</p>
+        <p>That's where most development falls short. Generic content, abstract models, programmes that don't reflect the reality you're actually in.</p>
+        <p>When leaders do the real work — building self-awareness, understanding their impact, strengthening how they connect and communicate — everything shifts.</p>
+        <p>Conversations become clearer. Teams become more connected. Leadership feels less reactive and more grounded.</p>
+        <p class="pull">"Not a one-day inspiration hit. Capability that lasts."</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- How we work -->
+  <section class="d1-how reveal" id="d1-work">
+    <span class="eyebrow">Feature · 03 — How it works</span>
+    <h2>How it <span class="italic">works.</span></h2>
+    <div class="steps">
+      <div class="step">
+        <span class="num">i.</span>
+        <h3>Understand the real picture</h3>
+        <p>We start with a conversation. What's actually going on? What are your leaders navigating? What does good look like for your organisation right now?</p>
+      </div>
+      <div class="step">
+        <span class="num">ii.</span>
+        <h3>Design for your reality</h3>
+        <p>No off-the-shelf programmes. Everything is shaped around your people, your pressures, and the outcomes that matter.</p>
+      </div>
+      <div class="step">
+        <span class="num">iii.</span>
+        <h3>Create space for real growth</h3>
+        <p>Through workshops, development journeys, advisory, or community, we build the conditions for leaders to reflect, connect, and lead with greater clarity.</p>
+      </div>
+    </div>
+    <div class="cta-row">
+      <a class="btn ghost" href="#d1-final">Start a conversation <span class="arrow">→</span></a>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section class="d1-services reveal" id="d1-services">
+    <div class="inner">
+      <span class="eyebrow">Feature · 04 — Services</span>
+      <h2>Ways to <span class="italic">work together.</span></h2>
+      <div class="list">
+        <div class="item">
+          <span class="num">01</span>
+          <h3>Leadership <span class="italic">Experiences</span></h3>
+          <p>Workshops and development programmes that help leaders build self-awareness, emotional intelligence, and stronger ways of leading. Grounded in your organisational reality, not abstract models.</p>
+          <span class="arrow">→</span>
+        </div>
+        <div class="item">
+          <span class="num">02</span>
+          <h3>Team <span class="italic">Development</span></h3>
+          <p>Designed experiences that strengthen how teams communicate, collaborate, and function, particularly during periods of growth, change, or transition.</p>
+          <span class="arrow">→</span>
+        </div>
+        <div class="item">
+          <span class="num">03</span>
+          <h3>Strategic Facilitation <span class="italic">&amp; Advisory</span></h3>
+          <p>Facilitated sessions and advisory partnerships that help leadership teams think more clearly, challenge assumptions, and move forward with confidence.</p>
+          <span class="arrow">→</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonial -->
+  <section class="d1-testimonial reveal">
+    <div class="quote-mark">"</div>
+    <blockquote>Rowena has a rare gift for leadership. She didn't just manage our team, she made us feel so talented and capable that we wanted to work harder just to prove her right. She understands people at a human level and knows exactly how to unlock their potential.</blockquote>
+    <cite>Aastha Gauba · Former Global Training Manager, Pandora</cite>
+  </section>
+
+  <!-- About fuller -->
+  <section class="d1-about-full reveal">
+    <div class="img-ph"><img src="images/About-rowena-doyle-speaker.jpeg" alt="Rowena Doyle speaking" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"></div>
+    <div class="text">
+      <span class="eyebrow">Feature · 05 — The Founder</span>
+      <h2>Hi, I'm <span class="italic">Rowena.</span></h2>
+      <p>I've spent over 15 years developing leaders and building learning experiences inside global organisations. I've led teams, designed programmes from the ground up, and worked closely with leaders navigating the kind of complexity that doesn't come with a clear answer.</p>
+      <p class="pull">The leaders who had the most impact weren't always the most experienced or the most qualified. They were the ones who knew themselves.</p>
+      <p>Reframd grew out of that belief. It's a space where leaders can pause, do the real work, and come back to their teams and organisations with greater clarity, confidence, and connection.</p>
+    </div>
+  </section>
+
+  <!-- Event -->
+  <section class="d1-event reveal" id="d1-event">
+    <div class="inner">
+      <div class="img-ph"><img src="images/events-reframd.png" alt="Reframd MeetUp" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"></div>
+      <div>
+        <span class="eyebrow">Feature · 06 — Gathering</span>
+        <h2>Join us at the next <span class="italic">Reframd MeetUp.</span></h2>
+        <p class="desc">A space for leaders to think together. Not a networking event — an intentional gathering where honest conversation and shared reflection are the point.</p>
+        <dl class="details">
+          <dt>Where</dt><dd>Nomad Workspace, Copenhagen</dd>
+          <dt>When</dt><dd>TBC — 8:30 to 10:00 AM</dd>
+        </dl>
+        <div class="event-quote">"Practical, grounded, and refreshingly real. No abstract models, just insight that sticks."<br/><span style="font-family: var(--mono); font-style: normal; font-size: 11px; letter-spacing: .15em; text-transform: uppercase; color: var(--olive);">— Name, Title</span></div>
+        <a class="btn" href="#">Book your place <span class="arrow">→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="d1-faq reveal">
+    <span class="eyebrow">Feature · 07 — Questions</span>
+    <h2>Frequently <span class="italic">asked.</span></h2>
+    <details open>
+      <summary>Who is Reframd for? <span class="icon">+</span></summary>
+      <p>Leaders, founders, and L&amp;D or HR teams in organisations navigating growth, change, or complexity — particularly those who know that people and communication are where the real challenges live.</p>
+    </details>
+    <details>
+      <summary>What makes Reframd different from traditional leadership training? <span class="icon">+</span></summary>
+      <p>Everything is shaped around your context. No generic content, no pre-packaged models. The focus is practical capability that reflects the reality your leaders are actually in.</p>
+    </details>
+    <details>
+      <summary>Is this coaching, training, or consultancy? <span class="icon">+</span></summary>
+      <p>It can include elements of all three — workshops, advisory partnerships, community spaces, or speaking. The structure is always shaped around what's real for your organisation.</p>
+    </details>
+    <details>
+      <summary>How long do engagements typically last? <span class="icon">+</span></summary>
+      <p>It varies. Some organisations start with a single workshop or keynote. Others develop longer-term leadership journeys or advisory partnerships.</p>
+    </details>
+    <details>
+      <summary>Do you work with senior or executive leaders? <span class="icon">+</span></summary>
+      <p>Yes. Much of Rowena's experience is with senior leaders navigating strategic complexity. The approach respects experience and creates space for deeper thinking, honest challenge, and greater clarity.</p>
+    </details>
+    <details>
+      <summary>Do you work internationally? <span class="icon">+</span></summary>
+      <p>Yes. Rowena has worked globally for over 15 years and partners with organisations across different markets. Sessions can be delivered in person or virtually.</p>
+    </details>
+    <details>
+      <summary>Who should attend the Reframd MeetUp? <span class="icon">+</span></summary>
+      <p>Leaders working in L&amp;D, HR, or organisational leadership who want space to reflect, connect, and think clearly about the realities of leading right now.</p>
+    </details>
+    <details>
+      <summary>What will I leave with? <span class="icon">+</span></summary>
+      <p>Clearer thinking, fresh perspective, and practical insight. The aim isn't information overload — it's meaningful space to step back and lead more intentionally.</p>
+    </details>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="d1-final" id="d1-final">
+    <h2>Ready to lead <span class="italic">differently?</span></h2>
+    <p>If you're navigating complexity, growth, or change, and you know the human side is where it gets hard — let's talk.</p>
+    <a class="btn" href="#">Start a conversation <span class="arrow">→</span></a>
+    <a class="email" href="mailto:hello@reframd.com">hello@reframd.com</a>
+  </section>
+
+  <footer class="d1-footer">
+    <span>© Reframd MMXXVI</span>
+    <span>Copenhagen · Global</span>
+    <span>Crafted with care</span>
+  </footer>
+
+</section>
+
+<!-- DIRECTION 2 — ASYMMETRIC & DECLARATIVE -->
+<section class="direction d2 active" data-direction="2" data-screen-label="D2 Asymmetric Declarative">
+
+  <!-- Sidebar nav -->
+  <aside class="d2-side">
+    <div class="logo-ph img-ph" style="width:160px;height:80px;"><img src="images/reframd-logo-trans.png" alt="Reframd" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;"></div>
+    <button class="d2-nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="anchors">
+      <a href="#d2-work">How it works</a>
+      <a href="#d2-services">Services</a>
+      <a href="#d2-about-full">About</a>
+      <a href="#d2-event">Event</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </aside>
+
+  <!-- HERO -->
+  <section class="d2-hero" id="d2-hero" data-hero>
+    <div class="copy">
+      <div class="topbar">
+        <span>Reframd — A leadership practice</span>
+      </div>
+      <h1>
+        <span class="block">Leadership</span>
+        <span class="block indent">that starts</span>
+        <span class="block"><span class="italic">from the inside</span></span>
+        <span class="block indent">out.</span>
+      </h1>
+      <div class="sub">
+        <p>Most leadership challenges aren't strategic. They're human. Experience-led development that helps leaders understand themselves, communicate clearly, and bring out the best in the people around them.</p>
+      </div>
+    </div>
+    <div class="portrait-wrap">
+      <div class="portrait img-ph ochre" style="inset:40px 0 40px 0;"><img src="images/hero-reframd.png" alt="Reframd workspace" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"></div>
+    </div>
+  </section>
+
+  <!-- About short -->
+  <section class="d2-about-short" id="d2-about">
+    <div class="inner">
+      <div class="text">
+        <span class="eyebrow">A brief introduction</span>
+        <p>I'm <span class="italic">Rowena Doyle.</span></p>
+        <p>I've spent 15 years developing leaders inside global organisations, and what I've learned is that the best leaders aren't the most technically brilliant. They're the ones who understand themselves well enough to lead others.</p>
+        <p class="sig">That's what Reframd is built on.</p>
+      </div>
+      <div class="img-ph"><img src="images/brief-into-reframd-rowena-doyle.png" alt="Rowena Doyle" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"></div>
+    </div>
+  </section>
+
+  <!-- Problem / Outcome -->
+  <section class="d2-problem">
+    <span class="eyebrow">The challenge</span>
+    <h2>The challenge isn't what to do. <span class="italic">It's the human part.</span></h2>
+    <div class="body">
+      <div class="col">
+        <p>Most experienced leaders have the knowledge. They've navigated growth, managed change, delivered results. But at a certain point the work becomes less about strategy and more about people.</p>
+        <p>How you communicate. How you show up under pressure. How your team functions, or doesn't. How you lead when there's no clear answer.</p>
+        <p>That's where most development falls short. Generic content, abstract models, programmes that don't reflect the reality you're actually in.</p>
+      </div>
+      <div class="col">
+        <p>When leaders do the real work, building self-awareness, understanding their impact, strengthening how they connect, everything shifts.</p>
+        <p>Conversations become clearer. Teams become more connected. Leadership feels less reactive and more grounded.</p>
+        <p>Not a one-day inspiration hit. Capability that lasts.</p>
+      </div>
+      <p class="pull" style="color:#e5c1a8;">Everything shifts when leaders <span style="font-style: normal;">do the real work.</span></p>
+    </div>
+  </section>
+
+  <!-- How we work -->
+  <section class="d2-how" id="d2-work">
+    <div class="head">
+      <span class="eyebrow">How it works</span>
+      <h2>Three movements.<br/><span class="italic" style="color:#606b51;">One clear outcome.</span></h2>
+    </div>
+    <div class="steps" style="align-items: flex-start;">
+      <div class="step">
+        <span class="num">01</span>
+        <div>
+          <h3>Understand the real picture</h3>
+          <p>We start with a conversation. What's actually going on? What are your leaders navigating? What does good look like for your organisation right now?</p>
+        </div>
+      </div>
+      <div class="step">
+        <span class="num">02</span>
+        <div>
+          <h3>Design for your reality</h3>
+          <p>No off-the-shelf programmes. Everything is shaped around your people, your pressures, and the outcomes that matter.</p>
+        </div>
+      </div>
+      <div class="step">
+        <span class="num">03</span>
+        <div>
+          <h3>Create space for real growth</h3>
+          <p>Through workshops, development journeys, advisory, or community, we build the conditions for leaders to reflect, connect, and lead with greater clarity.</p>
+        </div>
+      </div>
+    </div>
+    <div class="cta-row">
+      <a class="btn" href="#contact">Start a conversation <span class="arrow">→</span></a>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section class="d2-services" id="d2-services">
+    <div class="head">
+      <span class="eyebrow">Services</span>
+      <h2>Three ways to <span class="italic">work together.</span></h2>
+    </div>
+    <div class="list">
+      <div class="item">
+        <span class="num">01</span>
+        <h3>Leadership <span class="italic">Experiences</span></h3>
+        <div class="img-ph"><img src="images/learning-experiences-reframd.png" alt="Understand the real picture" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"></div>
+        <p>Workshops and development programmes that help leaders build self-awareness, emotional intelligence, and stronger ways of leading. Grounded in your organisational reality.</p>
+        <span class="plus">+</span>
+      </div>
+      <div class="item">
+        <span class="num">02</span>
+        <h3>Team <span class="italic">Development</span></h3>
+        <div class="img-ph ochre"><img src="images/team-development-reframd.jpg" alt="Design for your reality" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"></div>
+        <p>Designed experiences that strengthen how teams communicate, collaborate, and function, particularly during periods of growth, change, or transition.</p>
+        <span class="plus">+</span>
+      </div>
+      <div class="item">
+        <span class="num">03</span>
+        <h3>Strategic Facilitation <span class="italic">&amp; Advisory</span></h3>
+        <div class="img-ph dark"><img src="images/strategic-development.png" alt="Create space for real growth" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"></div>
+        <p>Facilitated sessions and advisory partnerships that help leadership teams think more clearly, challenge assumptions, and move forward with confidence.</p>
+        <span class="plus">+</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonial -->
+  <section class="d2-testimonial">
+    <div class="inner">
+      <div class="label">In their words</div>
+      <blockquote>Rowena has a rare gift for leadership. She didn't just manage our team, she made us feel so <span class="italic">talented and capable</span> that we wanted to work harder just to prove her right.
+        <cite>Aastha Gauba · Former Global Training Manager, Pandora</cite>
+      </blockquote>
+    </div>
+  </section>
+
+  <!-- About fuller -->
+  <section class="d2-about-full" id="d2-about-full">
+    <div class="inner">
+      <div class="sticky-col">
+        <div class="img-ph"><img src="images/About-rowena-doyle-speaker.jpeg" alt="Rowena Doyle speaking" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"></div>
+        <div class="caption">
+          <span>Rowena Doyle</span>
+          <span>Founder</span>
+        </div>
+      </div>
+      <div class="text">
+        <span class="eyebrow">About Rowena</span>
+        <h2>Hi, I'm <span class="italic">Rowena.</span></h2>
+        <p>I've spent over 15 years developing leaders and building learning experiences inside global organisations. I've led teams, designed programmes from the ground up, and worked closely with leaders navigating the kind of complexity that doesn't come with a clear answer.</p>
+        <p>Along the way I kept coming back to the same thing. The leaders who had the most impact weren't always the most experienced or the most qualified. They were the ones who knew themselves, their patterns, their impact, how they showed up for others.</p>
+        <p class="pull">Reframd grew out of that belief.</p>
+        <p>It's a space where leaders can pause, do the real work, and come back to their teams and organisations with greater clarity, confidence, and connection.</p>
+        <div class="stats">
+          <div class="stat">
+            <div class="num"><span class="italic">15</span>+</div>
+            <div class="lbl">Years developing leaders</div>
+          </div>
+          <div class="stat">
+            <div class="num">Global</div>
+            <div class="lbl">Organisations &amp; markets</div>
+          </div>
+          <div class="stat">
+            <div class="num">1:1</div>
+            <div class="lbl">Shaped to your reality</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Event -->
+  <section class="d2-event" id="d2-event">
+    <div class="inner">
+      <div>
+        <span class="eyebrow">Events</span>
+        <h2>Join us at the next <span class="italic">Reframd MeetUp.</span></h2>
+        <p class="desc">A space for leaders to think together. Not a networking event, an intentional gathering where honest conversation and shared reflection are the point.</p>
+        <div class="where-when">
+          <div><span class="k">Where</span><span class="v">Nomad Workspace, Copenhagen</span></div>
+          <div><span class="k">When</span><span class="v">TBC</span></div>
+          <div><span class="k">Time</span><span class="v">8:30 — 10:00 AM</span></div>
+        </div>
+        <div class="event-quote">"Practical, grounded, and refreshingly real. No abstract models, just insight that sticks." — Kate · Project Genius</div>
+        <a class="btn" href="#contact">Book your place <span class="arrow">→</span></a>
+      </div>
+      <div class="right-img">
+        <div class="img-ph"><img src="images/events-reframd.png" alt="Reframd MeetUp" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="d2-faq">
+    <div class="inner">
+      <div class="head">
+        <h2>Good <span class="italic">questions.</span></h2>
+        <p class="intro">A handful of the questions that come up most. If yours isn't here, the answer is probably "let's talk."</p>
+      </div>
+      <div class="list">
+        <div class="faq-item is-open">
+          <button class="faq-q"><span class="q-text">Who is Reframd for?</span><span class="q-icon">+</span></button>
+          <div class="faq-a"><p>Leaders, founders, and L&amp;D or HR teams in organisations navigating growth, change, or complexity, particularly those who know that people and communication are where the real challenges live.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q"><span class="q-text">What makes Reframd different from traditional leadership training?</span><span class="q-icon">+</span></button>
+          <div class="faq-a"><p>Everything is shaped around your context. No generic content, no pre-packaged models. The focus is practical capability that reflects the reality your leaders are actually in.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q"><span class="q-text">Is this coaching, training, or consultancy?</span><span class="q-icon">+</span></button>
+          <div class="faq-a"><p>It can include elements of all three, workshops, advisory partnerships, community spaces, or speaking. The structure is always shaped around what's real for your organisation.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q"><span class="q-text">How long do engagements typically last?</span><span class="q-icon">+</span></button>
+          <div class="faq-a"><p>It varies. Some organisations start with a single workshop or keynote. Others develop longer-term leadership journeys or advisory partnerships. It's always built around your needs and timeline.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q"><span class="q-text">Do you work with senior or executive leaders?</span><span class="q-icon">+</span></button>
+          <div class="faq-a"><p>Yes. Much of Rowena's experience is with senior leaders navigating strategic complexity. The approach respects experience and creates space for deeper thinking, honest challenge, and greater clarity.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q"><span class="q-text">Do you work internationally?</span><span class="q-icon">+</span></button>
+          <div class="faq-a"><p>Yes. Rowena has worked globally for over 15 years and partners with organisations across different markets. Sessions can be delivered in person or virtually.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q"><span class="q-text">Who should attend the Reframd MeetUp?</span><span class="q-icon">+</span></button>
+          <div class="faq-a"><p>Leaders working in L&amp;D, HR, or organisational leadership who want space to reflect, connect, and think clearly about the realities of leading right now.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q"><span class="q-text">Is the MeetUp a networking event?</span><span class="q-icon">+</span></button>
+          <div class="faq-a"><p>It's intentionally structured. Connection is encouraged, but the focus is thoughtful discussion and shared reflection, not informal networking.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q"><span class="q-text">What will I leave with?</span><span class="q-icon">+</span></button>
+          <div class="faq-a"><p>Clearer thinking, fresh perspective, and practical insight. The aim isn't information overload. It's meaningful space to step back and lead more intentionally.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q"><span class="q-text">How can I collaborate with or partner with Rowena?</span><span class="q-icon">+</span></button>
+          <div class="faq-a"><p>Speaking at your organisation or event, an advisory partnership, co-hosting a roundtable, a podcast conversation, or collaborating on written content. If you have something in mind, start a conversation.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Merged closing section -->
+  <section class="d2-contact d2-final-merge" id="contact">
+    <div class="inner">
+      <h2 class="final-h2">Lead <span class="italic">differently.</span></h2>
+      <p class="final-sub">If you're navigating complexity, growth, or change, and you know the human side is where it gets hard.</p>
+      <h2>Start a <span class="italic">conversation.</span></h2>
+      <p class="contact-lead">Tell me a little about what you're working through. I'll read every message myself and get back to you personally.</p>
+      <p class="contact-email-line">Or email <a href="mailto:rowena@reframd.co">rowena@reframd.co</a> directly.</p>
+      <div class="contact-form-wrap">
+        <form id="contactForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" novalidate>
+          <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+          <input type="hidden" name="_subject" value="New message from Reframd site">
+          <div class="field">
+            <label for="cf-name">Name</label>
+            <input type="text" id="cf-name" name="name" required aria-required="true">
+            <span class="field-error" aria-live="polite"></span>
+          </div>
+          <div class="field">
+            <label for="cf-email">Email</label>
+            <input type="email" id="cf-email" name="email" required aria-required="true">
+            <span class="field-error" aria-live="polite"></span>
+          </div>
+          <div class="field">
+            <label for="cf-message">Message</label>
+            <textarea id="cf-message" name="message" rows="5" required aria-required="true"></textarea>
+            <span class="field-error" aria-live="polite"></span>
+          </div>
+          <button type="submit" class="btn contact-submit">Send message</button>
+          <p class="form-send-error" aria-live="polite"></p>
+        </form>
+        <div class="contact-success" hidden>
+          <h3>Thank you.</h3>
+          <p aria-live="polite">Your message is in. I'll be in touch soon.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="d2-footer">
+    <div class="footer-logo img-ph"><img src="images/reframed-logo-cream-text.png" alt="Reframd" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;"></div>
+    <nav class="footer-nav">
+      <a href="#d2-work">How it works</a>
+      <a href="#d2-services">Services</a>
+      <a href="#d2-about-full">About Rowena</a>
+      <a href="#d2-event">Events</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="footer-bottom">
+      <span>© Reframd <span id="copyright-year">2026</span></span>
+      <span class="footer-sep">·</span>
+      <a href="https://www.linkedin.com/in/rowena-doyle-31a00718/" target="_blank" rel="noopener noreferrer" aria-label="Rowena Doyle on LinkedIn">LinkedIn</a>
+      <span class="footer-sep">·</span>
+      <a href="https://docs.google.com/document/d/1D6k96fqu16HR7AyTCXzFsGFhZ0s_LwaULEKNrNTmykM/edit?usp=sharing" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
+    </div>
+  </footer>
+
+</section>
+
+<!-- DIRECTION 3 — REMOVED -->
+<section class="direction d3" data-direction="3" data-screen-label="D3 Essay Narrative" style="display:none!important">
+
+  <!-- Nav -->
+  <nav class="d3-nav">
+    <div class="logo"><img src="images/reframd-logo-olive.png" alt="Reframd"></div>
+    <div class="links">
+      <a href="#d3-about">About</a>
+      <a href="#d3-work">Approach</a>
+      <a href="#d3-services">Services</a>
+      <a href="#d3-event">MeetUp</a>
+    </div>
+    <a class="cta" href="#d3-final">Start a conversation →</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="d3-hero" data-hero>
+    <div class="portrait img-ph dark"><img src="images/hero-reframd.png" alt="Reframd workspace" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"></div>
+    <div class="vignette"></div>
+    <div class="chapter-mark"><span>Chapter One</span><span class="dash"></span><span>The Opening</span></div>
+    <h1>
+      Leadership that starts <span class="italic">from the inside out.</span>
+    </h1>
+    <div class="foot">
+      <span>Reframd — A leadership practice by Rowena Doyle</span>
+      <span>Scroll to begin ↓</span>
+    </div>
+  </section>
+
+  <!-- About short (chapter) -->
+  <section class="d3-chapter">
+    <div class="number">i.</div>
+    <div class="label">Chapter One · The Practice</div>
+    <h2>A <span class="italic">note</span> from the founder.</h2>
+  </section>
+  <section class="d3-about-short" id="d3-about">
+    <div class="img-ph ochre"><img src="images/brief-into-reframd-rowena-doyle.png" alt="Rowena Doyle" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"></div>
+    <p>I'm Rowena Doyle. I've spent 15 years developing leaders inside global organisations, and what I've learned is that the best leaders aren't the most technically brilliant.</p>
+    <p>They're the ones who understand themselves well enough to lead others.</p>
+    <div class="sig">That's what Reframd is built on.</div>
+  </section>
+
+  <!-- Problem (chapter) -->
+  <section class="d3-chapter">
+    <div class="number">ii.</div>
+    <div class="label">Chapter Two · The Challenge</div>
+    <h2>The challenge isn't what to do. <span class="italic">It's the human part.</span></h2>
+  </section>
+  <section class="d3-problem">
+    <p class="lede">Most experienced leaders have the knowledge. But at a certain point the work becomes less about strategy <span class="italic">and more about people.</span></p>
+    <div class="body">
+      <p>They've navigated growth, managed change, delivered results. Then the real work arrives — how you communicate. How you show up under pressure. How your team functions, or doesn't. How you lead when there's no clear answer.</p>
+      <p>That's where most development falls short. Generic content, abstract models, programmes that don't reflect the reality you're actually in.</p>
+      <div class="divider"></div>
+      <p>When leaders do the real work — building self-awareness, understanding their impact, strengthening how they connect and communicate — everything shifts.</p>
+      <p>Conversations become clearer. Teams become more connected. Leadership feels less reactive and more grounded.</p>
+    </div>
+    <p class="pull">"Not a one-day inspiration hit. <span style="font-style: normal;">Capability that lasts.</span>"</p>
+  </section>
+
+  <!-- Full-bleed break -->
+  <section class="d3-break">
+    <div class="img-ph dark"><span class="label">Full-bleed workshop photograph<br/>— people around a table</span></div>
+    <div class="caption">A Reframd session · Copenhagen 2025</div>
+  </section>
+
+  <!-- How we work -->
+  <section class="d3-chapter" id="d3-work">
+    <div class="number">iii.</div>
+    <div class="label">Chapter Three · The Method</div>
+    <h2>How it <span class="italic">works.</span></h2>
+  </section>
+  <section class="d3-how">
+    <div class="steps">
+      <div class="step">
+        <span class="num">01</span>
+        <div>
+          <h3>Understand the <span class="italic">real picture.</span></h3>
+          <p>We start with a conversation. What's actually going on? What are your leaders navigating? What does good look like for your organisation right now?</p>
+        </div>
+      </div>
+      <div class="step">
+        <span class="num">02</span>
+        <div>
+          <h3>Design for <span class="italic">your reality.</span></h3>
+          <p>No off-the-shelf programmes. Everything is shaped around your people, your pressures, and the outcomes that matter.</p>
+        </div>
+      </div>
+      <div class="step">
+        <span class="num">03</span>
+        <div>
+          <h3>Create space for <span class="italic">real growth.</span></h3>
+          <p>Through workshops, development journeys, advisory, or community, we build the conditions for leaders to reflect, connect, and lead with greater clarity.</p>
+        </div>
+      </div>
+    </div>
+    <div class="cta-row">
+      <a class="btn ghost" href="#d3-final">Start a conversation →</a>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section class="d3-chapter" id="d3-services">
+    <div class="number">iv.</div>
+    <div class="label">Chapter Four · The Offerings</div>
+    <h2>Ways to <span class="italic">work together.</span></h2>
+  </section>
+  <section class="d3-services">
+    <div class="inner">
+      <div class="grid">
+        <div class="card">
+          <div class="img-ph"><img src="images/learning-experiences-reframd.png" alt="Understand the real picture" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"></div>
+          <div class="num">01 · Experiences</div>
+          <h3>Leadership <span class="italic">Experiences</span></h3>
+          <p>Workshops and development programmes that help leaders build self-awareness, emotional intelligence, and stronger ways of leading. Grounded in your organisational reality, not abstract models.</p>
+          <div class="more">Learn more →</div>
+        </div>
+        <div class="card">
+          <div class="img-ph ochre"><img src="images/team-development-reframd.jpg" alt="Design for your reality" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"></div>
+          <div class="num">02 · Teams</div>
+          <h3>Team <span class="italic">Development</span></h3>
+          <p>Designed experiences that strengthen how teams communicate, collaborate, and function, particularly during periods of growth, change, or transition.</p>
+          <div class="more">Learn more →</div>
+        </div>
+        <div class="card">
+          <div class="img-ph dark"><img src="images/strategic-development.png" alt="Create space for real growth" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"></div>
+          <div class="num">03 · Advisory</div>
+          <h3>Strategic Facilitation <span class="italic">&amp; Advisory</span></h3>
+          <p>Facilitated sessions and advisory partnerships that help leadership teams think more clearly, challenge assumptions, and move forward with confidence.</p>
+          <div class="more">Learn more →</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonial -->
+  <section class="d3-testimonial">
+    <div class="mark">"</div>
+    <blockquote>Rowena has a rare gift for leadership. She didn't just manage our team — she made us feel so talented and capable that we wanted to work harder just to prove her right. She understands people at a human level and knows exactly how to unlock their potential.</blockquote>
+    <cite>Aastha Gauba · Former Global Training Manager, Pandora</cite>
+  </section>
+
+  <!-- About fuller -->
+  <section class="d3-chapter">
+    <div class="number">v.</div>
+    <div class="label">Chapter Five · The Founder</div>
+    <h2>Hi, I'm <span class="italic">Rowena.</span></h2>
+  </section>
+  <section class="d3-about-full">
+    <div class="inner">
+      <p>I've spent over 15 years developing leaders and building learning experiences inside global organisations. I've led teams, designed programmes from the ground up, and worked closely with leaders navigating the kind of complexity that doesn't come with a clear answer.</p>
+      <div class="portrait-row">
+        <div class="img-ph"><img src="images/About-rowena-doyle-speaker.jpeg" alt="Rowena Doyle speaking" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"></div>
+        <div class="img-ph ochre"><span class="label">Rowena<br/>in session</span></div>
+      </div>
+      <p>Along the way I kept coming back to the same thing. The leaders who had the most impact weren't always the most experienced or the most qualified. They were the ones who knew themselves — their patterns, their impact, how they showed up for others.</p>
+      <div class="pull">"The leaders who had the most impact were the ones who knew themselves."</div>
+      <p>Reframd grew out of that belief. It's a space where leaders can pause, do the real work, and come back to their teams and organisations with greater clarity, confidence, and connection.</p>
+      <div class="signature">— Rowena</div>
+    </div>
+  </section>
+
+  <!-- Event -->
+  <section class="d3-chapter" id="d3-event">
+    <div class="number">vi.</div>
+    <div class="label">Chapter Six · The Gathering</div>
+    <h2>Join us at the next <span class="italic">MeetUp.</span></h2>
+  </section>
+  <section class="d3-event">
+    <div class="inner">
+      <div class="img-ph"><img src="images/events-reframd.png" alt="Reframd MeetUp" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"></div>
+      <p class="desc">A space for leaders to think together. Not a networking event — an intentional gathering where honest conversation and shared reflection are the point.</p>
+      <div class="where-when">
+        <div class="cell">Where<span class="v">Nomad Workspace, CPH</span></div>
+        <div class="cell">When<span class="v">TBC</span></div>
+        <div class="cell">Time<span class="v">8:30 — 10:00 AM</span></div>
+      </div>
+      <div class="event-quote">"Practical, grounded, and refreshingly real. No abstract models, just insight that sticks." — Name, Title</div>
+      <a class="btn" href="#">Book your place →</a>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="d3-chapter">
+    <div class="number">vii.</div>
+    <div class="label">Chapter Seven · Questions</div>
+    <h2>Good <span class="italic">questions.</span></h2>
+  </section>
+  <section class="d3-faq">
+    <details open>
+      <summary>Who is Reframd for? <span class="icon">+</span></summary>
+      <p>Leaders, founders, and L&amp;D or HR teams in organisations navigating growth, change, or complexity — particularly those who know that people and communication are where the real challenges live.</p>
+    </details>
+    <details>
+      <summary>What makes Reframd different from traditional leadership training? <span class="icon">+</span></summary>
+      <p>Everything is shaped around your context. No generic content, no pre-packaged models. The focus is practical capability that reflects the reality your leaders are actually in.</p>
+    </details>
+    <details>
+      <summary>Is this coaching, training, or consultancy? <span class="icon">+</span></summary>
+      <p>It can include elements of all three — workshops, advisory partnerships, community spaces, or speaking.</p>
+    </details>
+    <details>
+      <summary>How long do engagements typically last? <span class="icon">+</span></summary>
+      <p>It varies. Some organisations start with a single workshop or keynote. Others develop longer-term leadership journeys or advisory partnerships.</p>
+    </details>
+    <details>
+      <summary>Do you work with senior or executive leaders? <span class="icon">+</span></summary>
+      <p>Yes. Much of Rowena's experience is with senior leaders navigating strategic complexity.</p>
+    </details>
+    <details>
+      <summary>Do you work internationally? <span class="icon">+</span></summary>
+      <p>Yes. Sessions can be delivered in person or virtually.</p>
+    </details>
+    <details>
+      <summary>What will I leave with? <span class="icon">+</span></summary>
+      <p>Clearer thinking, fresh perspective, and practical insight. The aim isn't information overload — it's meaningful space to step back and lead more intentionally.</p>
+    </details>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="d3-final" id="d3-final">
+    <h2>Ready to lead <span class="italic">differently?</span></h2>
+    <p>If you're navigating complexity, growth, or change — and you know the human side is where it gets hard — let's talk.</p>
+    <a class="btn" href="#">Start a conversation →</a>
+    <a class="email" href="mailto:hello@reframd.com">Or email directly — <span>hello@reframd.com</span></a>
+  </section>
+
+  <footer class="d3-footer">
+    <span>© Reframd MMXXVI</span>
+    <span>Rowena Doyle · Copenhagen</span>
+    <span>Made with care</span>
+  </footer>
+
+</section>
+
+
+<script>
+(function() {
+  // Direction switching
+  const buttons = document.querySelectorAll('.chrome button');
+  const directions = document.querySelectorAll('.direction');
+  const tweaks = document.getElementById('heroTweaks');
+
+  const STORAGE_DIR = 'reframd_wf_direction';
+  const STORAGE_HERO = 'reframd_wf_hero';
+
+  function setDirection(n, persist = true) {
+    buttons.forEach(b => b.classList.toggle('active', b.dataset.dir === String(n)));
+    directions.forEach(d => d.classList.toggle('active', d.dataset.direction === String(n)));
+    if (persist) { try { localStorage.setItem(STORAGE_DIR, String(n)); } catch(e){} }
+    window.scrollTo({ top: 0, behavior: 'instant' });
+    applyHero(currentHero, false);
+  }
+  buttons.forEach(b => b.addEventListener('click', () => setDirection(b.dataset.dir)));
+
+  // Hero variant switching — applies across all directions simultaneously
+  const heroButtons = tweaks.querySelectorAll('button');
+  let currentHero = 'overlay';
+
+  function applyHero(variant, persist = true) {
+    currentHero = variant;
+    heroButtons.forEach(b => b.classList.toggle('active', b.dataset.heroVariant === variant));
+    document.querySelectorAll('[data-hero]').forEach(h => {
+      h.classList.remove('split', 'typo');
+      if (variant === 'split') h.classList.add('split');
+      if (variant === 'typo') h.classList.add('typo');
+    });
+    if (persist) { try { localStorage.setItem(STORAGE_HERO, variant); } catch(e){} }
+  }
+  heroButtons.forEach(b => b.addEventListener('click', () => applyHero(b.dataset.heroVariant)));
+
+  // Tweaks visibility — controlled by host edit mode
+  let editMode = false;
+  window.addEventListener('message', (e) => {
+    if (!e.data || !e.data.type) return;
+    if (e.data.type === '__activate_edit_mode') {
+      editMode = true;
+      tweaks.classList.add('visible');
+    } else if (e.data.type === '__deactivate_edit_mode') {
+      editMode = false;
+      tweaks.classList.remove('visible');
+    }
+  });
+  try { window.parent.postMessage({ type: '__edit_mode_available' }, '*'); } catch(e){}
+
+  // Restore state
+  try {
+    const d = localStorage.getItem(STORAGE_DIR);
+    if (d) setDirection(d, false);
+    const h = localStorage.getItem(STORAGE_HERO);
+    if (h) applyHero(h, false);
+  } catch(e){}
+
+  // Smooth scroll for all internal anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+
+  // Contact form
+  const contactForm = document.getElementById('contactForm');
+  if (contactForm) {
+    const validateField = (field) => {
+      const error = field.parentElement.querySelector('.field-error');
+      if (!field.value.trim()) {
+        field.classList.add('has-error');
+        if (error) error.textContent = 'This field is required.';
+        return false;
+      }
+      if (field.type === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(field.value)) {
+        field.classList.add('has-error');
+        if (error) error.textContent = 'Please enter a valid email address.';
+        return false;
+      }
+      field.classList.remove('has-error');
+      if (error) error.textContent = '';
+      return true;
+    };
+
+    contactForm.querySelectorAll('[required]').forEach(field => {
+      field.addEventListener('input', () => validateField(field));
+    });
+
+    contactForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const fields = [...contactForm.querySelectorAll('[required]')];
+      const allValid = fields.map(validateField).every(Boolean);
+      if (!allValid) return;
+
+      const btn = contactForm.querySelector('.contact-submit');
+      const sendError = contactForm.querySelector('.form-send-error');
+      btn.disabled = true;
+      btn.textContent = 'Sending…';
+      sendError.textContent = '';
+
+      try {
+        const res = await fetch(contactForm.action, {
+          method: 'POST',
+          body: new FormData(contactForm),
+          headers: { 'Accept': 'application/json' }
+        });
+        if (res.ok) {
+          contactForm.hidden = true;
+          document.querySelector('.contact-success').hidden = false;
+        } else {
+          throw new Error();
+        }
+      } catch {
+        btn.disabled = false;
+        btn.textContent = 'Send message';
+        sendError.textContent = 'Something went wrong. Please try again or email rowena@reframd.co.';
+      }
+    });
+  }
+
+  // FAQ accordion
+  document.querySelectorAll('.d2-faq .faq-q').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.faq-item');
+      const isOpen = item.classList.contains('is-open');
+      document.querySelectorAll('.d2-faq .faq-item').forEach(i => i.classList.remove('is-open'));
+      if (!isOpen) item.classList.add('is-open');
+    });
+  });
+
+  // Scroll reveals
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -60px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  document.getElementById('copyright-year').textContent = new Date().getFullYear();
+
+  // Mobile nav toggle for D2
+  const navToggle = document.querySelector('.d2-nav-toggle');
+  const mobileAnchors = document.querySelector('.d2-side .anchors');
+  if (navToggle && mobileAnchors) {
+    navToggle.addEventListener('click', () => {
+      const isOpen = mobileAnchors.classList.toggle('is-open');
+      navToggle.setAttribute('aria-expanded', isOpen);
+    });
+    mobileAnchors.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileAnchors.classList.remove('is-open');
+        navToggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+  }
+})();
+</script>
+
+</body>
+</html>
