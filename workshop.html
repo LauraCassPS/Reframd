@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Skills Audit — Free Workshop · 16 May 2025 · Reframd</title>
+  <meta name="description" content="A free 90-minute online workshop for people navigating career change. Map where you are, where you want to go, and audit the skills that will get you there. Friday 16 May, 10am Irish time.">
+  <link rel="stylesheet" href="styles/base.css">
+  <link rel="stylesheet" href="styles/d1-classic.css">
+  <style>
+    /* ── Workshop-specific styles ───────────────────────────── */
+
+    .ws-hero {
+      padding: 120px 48px 100px;
+      max-width: 1280px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .ws-hero .date-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 16px;
+      padding: 10px 24px;
+      border: 1px solid rgba(39, 45, 30, 0.2);
+      margin-bottom: 52px;
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--olive);
+    }
+    .ws-hero .date-badge .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--ochre);
+      flex-shrink: 0;
+    }
+    .ws-hero h1 {
+      font-family: var(--serif);
+      font-size: clamp(56px, 9vw, 136px);
+      font-weight: 300;
+      line-height: 0.95;
+      letter-spacing: -0.03em;
+      color: var(--ink);
+      margin-bottom: 48px;
+    }
+    .ws-hero h1 em {
+      font-style: italic;
+      font-weight: 300;
+      color: var(--ochre);
+    }
+    .ws-hero .sub {
+      font-family: var(--serif);
+      font-size: clamp(20px, 2vw, 26px);
+      line-height: 1.5;
+      font-weight: 400;
+      color: var(--olive);
+      max-width: 620px;
+      margin: 0 auto 56px;
+    }
+    .ws-hero .time-row {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--olive);
+      margin-top: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0;
+      flex-wrap: wrap;
+    }
+    .ws-hero .time-row .seg {
+      padding: 0 20px;
+    }
+    .ws-hero .time-row .sep {
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--ochre);
+      flex-shrink: 0;
+    }
+
+    /* ── Platform banner ─────────────────────────────────────── */
+    .ws-platform {
+      background: var(--sage);
+      padding: 16px 48px;
+      text-align: center;
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--olive);
+      border-bottom: 1px solid rgba(39, 45, 30, 0.12);
+    }
+
+    /* ── Skills audit grid ───────────────────────────────────── */
+    .ws-skills {
+      background: var(--ink);
+      color: var(--cream);
+      padding: 120px 48px;
+    }
+    .ws-skills .inner {
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+    .ws-skills .eyebrow { color: var(--sage); }
+    .ws-skills h2 {
+      font-family: var(--serif);
+      font-size: clamp(40px, 4.8vw, 72px);
+      line-height: 1.0;
+      font-weight: 400;
+      margin: 24px 0 64px;
+      max-width: 840px;
+    }
+    .ws-skills h2 em { font-style: italic; font-weight: 300; }
+    .ws-skills .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: rgba(255, 254, 247, 0.1);
+    }
+    .ws-skills .card {
+      background: var(--ink);
+      padding: 48px 44px;
+      transition: background 0.25s;
+    }
+    .ws-skills .card:hover { background: rgba(255, 254, 247, 0.03); }
+    .ws-skills .card .label {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(208, 215, 198, 0.6);
+      margin-bottom: 18px;
+      display: block;
+    }
+    .ws-skills .card h3 {
+      font-family: var(--serif);
+      font-size: clamp(40px, 4vw, 60px);
+      line-height: 0.95;
+      font-weight: 300;
+      font-style: italic;
+      margin-bottom: 28px;
+    }
+    .ws-skills .card h3.love   { color: var(--ochre); }
+    .ws-skills .card h3.drop   { color: var(--sage); }
+    .ws-skills .card h3.learn  { color: var(--ochre-light); }
+    .ws-skills .card h3.acquire { color: var(--cream); }
+    .ws-skills .card ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .ws-skills .card ul li {
+      font-size: 15px;
+      line-height: 1.55;
+      color: rgba(255, 254, 247, 0.65);
+      padding-left: 22px;
+      position: relative;
+    }
+    .ws-skills .card ul li::before {
+      content: "—";
+      position: absolute;
+      left: 0;
+      font-family: var(--serif);
+      color: var(--ochre);
+      opacity: 0.7;
+    }
+
+    /* ── What you leave with ─────────────────────────────────── */
+    .ws-leave {
+      background: var(--sage);
+      padding: 120px 48px;
+    }
+    .ws-leave .inner {
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+    .ws-leave h2 {
+      font-family: var(--serif);
+      font-size: clamp(40px, 4.8vw, 72px);
+      line-height: 1.0;
+      font-weight: 400;
+      margin: 24px 0 64px;
+    }
+    .ws-leave h2 em { font-style: italic; font-weight: 300; }
+    .ws-leave .items {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 40px;
+    }
+    .ws-leave .item {
+      border-top: 1px solid rgba(39, 45, 30, 0.35);
+      padding-top: 28px;
+    }
+    .ws-leave .item .num {
+      font-family: var(--serif);
+      font-size: 22px;
+      font-style: italic;
+      font-weight: 300;
+      color: var(--ochre-dark);
+      margin-bottom: 16px;
+      display: block;
+      letter-spacing: -0.01em;
+    }
+    .ws-leave .item h3 {
+      font-family: var(--serif);
+      font-size: 22px;
+      font-weight: 500;
+      line-height: 1.2;
+      margin-bottom: 12px;
+    }
+    .ws-leave .item p {
+      font-size: 15px;
+      line-height: 1.6;
+      color: var(--olive);
+    }
+
+    /* ── Registration form ───────────────────────────────────── */
+    .ws-register {
+      background: var(--ink);
+      color: var(--cream);
+      padding: 120px 48px;
+    }
+    .ws-register .inner {
+      max-width: 820px;
+      margin: 0 auto;
+    }
+    .ws-register .eyebrow { color: var(--sage); }
+    .ws-register h2 {
+      font-family: var(--serif);
+      font-size: clamp(48px, 6vw, 96px);
+      line-height: 0.95;
+      font-weight: 300;
+      letter-spacing: -0.025em;
+      margin: 24px 0 16px;
+    }
+    .ws-register h2 em { font-style: italic; color: var(--ochre); }
+    .ws-register .sub {
+      font-size: 17px;
+      line-height: 1.65;
+      color: var(--sage);
+      margin-bottom: 56px;
+      max-width: 560px;
+    }
+    .ws-form {
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+    }
+    .ws-form .field {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .ws-form label {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(208, 215, 198, 0.75);
+    }
+    .ws-form label .optional {
+      opacity: 0.5;
+      font-size: 9px;
+      margin-left: 8px;
+    }
+    .ws-form input,
+    .ws-form textarea {
+      background: rgba(255, 254, 247, 0.05);
+      border: 1px solid rgba(255, 254, 247, 0.15);
+      color: var(--cream);
+      padding: 16px 18px;
+      font-family: var(--sans);
+      font-size: 16px;
+      outline: none;
+      transition: border-color 0.2s, background 0.2s;
+      width: 100%;
+      -webkit-appearance: none;
+      border-radius: 0;
+    }
+    .ws-form input::placeholder,
+    .ws-form textarea::placeholder {
+      color: rgba(255, 254, 247, 0.25);
+    }
+    .ws-form input:focus,
+    .ws-form textarea:focus {
+      border-color: var(--ochre);
+      background: rgba(255, 254, 247, 0.08);
+    }
+    .ws-form textarea {
+      resize: vertical;
+      min-height: 96px;
+    }
+    .ws-form .submit-row {
+      margin-top: 8px;
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .ws-form .btn {
+      background: var(--ochre);
+      color: var(--cream);
+      min-width: 220px;
+      justify-content: center;
+    }
+    .ws-form .btn:hover { background: var(--cream); color: var(--ink); }
+    .ws-form .btn:disabled {
+      opacity: 0.5;
+      pointer-events: none;
+    }
+    .ws-form .note {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      color: rgba(255, 254, 247, 0.35);
+      text-transform: uppercase;
+    }
+    .ws-form-success {
+      display: none;
+      padding: 40px 0;
+    }
+    .ws-form-success .mark {
+      font-family: var(--serif);
+      font-size: 72px;
+      font-style: italic;
+      color: var(--ochre);
+      line-height: 1;
+      margin-bottom: 24px;
+    }
+    .ws-form-success h3 {
+      font-family: var(--serif);
+      font-size: 40px;
+      font-weight: 400;
+      margin-bottom: 16px;
+    }
+    .ws-form-success p {
+      font-size: 17px;
+      color: var(--sage);
+      line-height: 1.65;
+      max-width: 480px;
+    }
+
+    /* ── Mobile ──────────────────────────────────────────────── */
+    @media (max-width: 768px) {
+      .ws-hero {
+        padding: 80px 24px 64px;
+      }
+      .ws-hero .time-row {
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+      }
+      .ws-hero .time-row .sep { display: none; }
+
+      .ws-platform { padding: 14px 24px; font-size: 9px; letter-spacing: 0.12em; }
+
+      .ws-skills { padding: 64px 24px; }
+      .ws-skills h2 { font-size: clamp(32px, 8vw, 56px); margin-bottom: 40px; }
+      .ws-skills .grid { grid-template-columns: 1fr; }
+      .ws-skills .card { padding: 36px 24px; }
+
+      .ws-leave { padding: 64px 24px; }
+      .ws-leave .items { grid-template-columns: 1fr 1fr; gap: 28px; }
+
+      .ws-register { padding: 80px 24px; }
+      .ws-register h2 { font-size: clamp(44px, 11vw, 80px); }
+      .ws-form .submit-row { flex-direction: column; align-items: flex-start; gap: 16px; }
+    }
+
+    @media (max-width: 480px) {
+      .ws-leave .items { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── Masthead ───────────────────────────────────────────── -->
+  <header class="d1-mast">
+    <div class="left">Free Workshop · 16 May 2025</div>
+    <div class="logo">Reframd</div>
+    <nav class="right">
+      <a href="#register">Reserve your place →</a>
+    </nav>
+  </header>
+
+  <!-- ── Platform banner ───────────────────────────────────── -->
+  <div class="ws-platform">
+    Friday 16 May 2025 &nbsp;·&nbsp; 10:00 Irish Time &nbsp;·&nbsp; 11:00 Copenhagen &nbsp;·&nbsp; Free &nbsp;·&nbsp; Online via Google Meet
+  </div>
+
+  <!-- ── Hero ──────────────────────────────────────────────── -->
+  <section class="ws-hero reveal">
+    <div class="date-badge">
+      <span class="dot"></span>
+      Skills Audit Workshop
+      <span class="dot"></span>
+    </div>
+    <h1>Where you are.<br><em>Where you want</em><br>to be.</h1>
+    <p class="sub">A free online workshop for people navigating career change — to get honest about where you are, where you're going, and the skills that will get you there.</p>
+    <a class="btn" href="#register">Reserve your free place <span class="arrow">→</span></a>
+    <div class="time-row">
+      <span class="seg">10:00 Irish Time</span>
+      <span class="sep"></span>
+      <span class="seg">11:00 Copenhagen</span>
+      <span class="sep"></span>
+      <span class="seg">Online · Google Meet</span>
+      <span class="sep"></span>
+      <span class="seg">Free</span>
+    </div>
+  </section>
+
+  <div class="rule" style="max-width: 1280px; margin: 0 auto;"></div>
+
+  <!-- ── About the workshop ────────────────────────────────── -->
+  <section class="d1-band reveal">
+    <span class="eyebrow">About this workshop</span>
+    <div>
+      <p>Most career change advice starts with the job market. This one starts with you.</p>
+      <p style="font-size: 17px; line-height: 1.65; color: var(--olive); margin-top: 22px; max-width: 680px;">We begin where you actually are — not where you think you should be. From there, you'll audit your skills across four categories and turn that into a clear, concrete path forward. You'll leave with a completed worksheet and a quieter head.</p>
+    </div>
+  </section>
+
+  <!-- ── Session flow ──────────────────────────────────────── -->
+  <section class="d1-how reveal">
+    <span class="eyebrow">What we'll cover</span>
+    <h2>The session <em class="italic">in three parts.</em></h2>
+    <div class="steps">
+      <div class="step">
+        <span class="num">01</span>
+        <h3>Honest A to B</h3>
+        <p>We start with where you actually are. Then we get clear on B — not the polished version, the real one. Has A become more honest? Has B become clearer? Two minutes of quiet. Some things shift.</p>
+      </div>
+      <div class="step">
+        <span class="num">02</span>
+        <h3>Skills Audit</h3>
+        <p>Four categories. One question at the centre: what's serving where you're going? You'll work through Love, Drop, Learn, and Acquire on your worksheet. Ten minutes of focused, specific work.</p>
+      </div>
+      <div class="step">
+        <span class="num">03</span>
+        <h3>Your Path Forward</h3>
+        <p>The audit becomes a plan — quick wins this month, moves over the next 90 days, structural changes within a year. Professional and personal. Because the conditions that make a plan possible matter as much as the plan itself.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Skills framework ──────────────────────────────────── -->
+  <section class="ws-skills">
+    <div class="inner">
+      <span class="eyebrow">The skills audit framework</span>
+      <h2>Four categories.<br><em>One question at the centre:</em><br>what's serving where you're going?</h2>
+      <div class="grid">
+        <div class="card">
+          <span class="label">Category 01</span>
+          <h3 class="love">Love</h3>
+          <ul>
+            <li>What you love doing</li>
+            <li>What you're genuinely good at</li>
+            <li>What you want to keep and grow</li>
+          </ul>
+        </div>
+        <div class="card">
+          <span class="label">Category 02</span>
+          <h3 class="drop">Drop</h3>
+          <ul>
+            <li>What drains you</li>
+            <li>What no longer serves you</li>
+            <li>What you've outgrown</li>
+          </ul>
+        </div>
+        <div class="card">
+          <span class="label">Category 03</span>
+          <h3 class="learn">Learn</h3>
+          <ul>
+            <li>What closes the gap to B</li>
+            <li>What you're ready for</li>
+            <li>What you've been circling</li>
+          </ul>
+        </div>
+        <div class="card">
+          <span class="label">Category 04</span>
+          <h3 class="acquire">Acquire</h3>
+          <ul>
+            <li>What to outsource</li>
+            <li>Who to partner with</li>
+            <li>What tools, systems, or support to build</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── What you leave with ───────────────────────────────── -->
+  <section class="ws-leave reveal">
+    <div class="inner">
+      <span class="eyebrow">What you leave with</span>
+      <h2>A worksheet. <em>A plan.</em></h2>
+      <div class="items">
+        <div class="item">
+          <span class="num">A → B</span>
+          <h3>Your declaration</h3>
+          <p>Where you actually are. Where you honestly want to go.</p>
+        </div>
+        <div class="item">
+          <span class="num">Internal</span>
+          <h3>Awareness &amp; acceptance</h3>
+          <p>A clear-eyed view of what's working inside you — and what isn't.</p>
+        </div>
+        <div class="item">
+          <span class="num">External</span>
+          <h3>Your skills audit</h3>
+          <p>A completed Love / Drop / Learn / Acquire grid, ready to act on.</p>
+        </div>
+        <div class="item">
+          <span class="num">Actions</span>
+          <h3>Your plan</h3>
+          <p>Short, mid, and long-term steps — professional and personal conditions included.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── About Rowena ──────────────────────────────────────── -->
+  <section class="d1-about-short reveal">
+    <div class="img-ph ochre" style="aspect-ratio: 4/5; width: 100%;">
+      <span class="label">Photo · Rowena Doyle</span>
+    </div>
+    <div class="text">
+      <span class="eyebrow">Your facilitator</span>
+      <h2>Rowena Doyle</h2>
+      <p>[Add Rowena's bio here — 2 to 3 sentences about her background, who she works with, and what she believes about career change. Keep it personal and direct.]</p>
+      <p style="color: var(--olive);">[Optional: a second paragraph or a specific line about why she built this workshop and who it's designed for.]</p>
+      <div class="signature">Rowena</div>
+    </div>
+  </section>
+
+  <!-- ── Testimonial ───────────────────────────────────────── -->
+  <section class="d1-testimonial reveal">
+    <div class="quote-mark">"</div>
+    <blockquote>[Add a testimonial from someone who has worked with Rowena — a specific, concrete observation about the shift they experienced. One or two sentences. Real language only.]</blockquote>
+    <cite>[Name · Role · Context]</cite>
+  </section>
+
+  <!-- ── Registration ──────────────────────────────────────── -->
+  <section class="ws-register" id="register">
+    <div class="inner">
+      <span class="eyebrow">Reserve your place</span>
+      <h2>Free.<br><em>Online.</em><br>16 May.</h2>
+      <p class="sub">Places are limited. Add your name below and we'll send the Google Meet link, your worksheet, and a short note before the session.</p>
+
+      <form class="ws-form" id="workshopForm" novalidate>
+        <div class="field">
+          <label for="ws-name">First name</label>
+          <input type="text" id="ws-name" name="name" placeholder="Your first name" required autocomplete="given-name">
+        </div>
+        <div class="field">
+          <label for="ws-email">Email address</label>
+          <input type="email" id="ws-email" name="email" placeholder="your@email.com" required autocomplete="email">
+        </div>
+        <div class="field">
+          <label for="ws-where">Where are you right now? <span class="optional">— optional</span></label>
+          <textarea id="ws-where" name="where" placeholder="A sentence or two about where you are in your career change. Helps us prepare."></textarea>
+        </div>
+        <div class="submit-row">
+          <button type="submit" class="btn">Reserve my place <span class="arrow">→</span></button>
+          <span class="note">Free. No card needed.</span>
+        </div>
+      </form>
+
+      <div class="ws-form-success" id="workshopSuccess">
+        <div class="mark">Yes.</div>
+        <h3>You're in.</h3>
+        <p>We'll be in touch before 16 May with your Google Meet link and worksheet.<br>See you there.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FAQ ───────────────────────────────────────────────── -->
+  <section class="d1-faq reveal">
+    <span class="eyebrow">A few questions</span>
+    <h2>Things people <em class="italic">ask.</em></h2>
+
+    <details open>
+      <summary>Is it really free? <span class="icon">+</span></summary>
+      <p>Yes. No catch. This is a workshop we're running because we want to — to get the tools into people's hands. You'll need nothing more than a device and an internet connection.</p>
+    </details>
+
+    <details>
+      <summary>What do I need to join? <span class="icon">+</span></summary>
+      <p>A device and the Google Meet link we'll send you. You don't need a Google account to join as a participant. We'll also send your worksheet ahead of the session — print it or use it on screen.</p>
+    </details>
+
+    <details>
+      <summary>Do I need to prepare anything? <span class="icon">+</span></summary>
+      <p>Nothing formal. Just bring yourself and an honest answer to this: where are you, and where do you want to be? That's your raw material. We'll do the rest together.</p>
+    </details>
+
+    <details>
+      <summary>What if I don't know what B is yet? <span class="icon">+</span></summary>
+      <p>That's exactly why you should come. B doesn't need to be fully formed — it just needs to be honest. One of the things this session does is help you articulate it, even if it's still blurry. You'll leave with something clearer than you arrived with.</p>
+    </details>
+
+    <details>
+      <summary>Who is this for? <span class="icon">+</span></summary>
+      <p>People who know something needs to change — a role, a field, a way of working — but haven't fully mapped it yet. Mid-career, mid-change. Not early career. This is for people who have something to audit.</p>
+    </details>
+
+    <details>
+      <summary>Will the session be recorded? <span class="icon">+</span></summary>
+      <p>[To confirm with Rowena — add your recording policy here. If no recording: "The session won't be recorded. We want people to be able to work freely."]</p>
+    </details>
+  </section>
+
+  <!-- ── Footer ────────────────────────────────────────────── -->
+  <footer class="d1-footer">
+    <span>© 2025 Reframd</span>
+    <span>Skills Audit · 16 May 2025 · 10:00 Irish · 11:00 Copenhagen</span>
+    <span>
+      <a href="mailto:[rowena@email.com]" style="color: inherit; text-decoration: none;">[rowena@email.com]</a>
+      &nbsp;·&nbsp;
+      <a href="mailto:[laura@email.com]" style="color: inherit; text-decoration: none;">[laura@email.com]</a>
+    </span>
+  </footer>
+
+  <script>
+    // Scroll reveal
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+    // Registration form
+    const form = document.getElementById('workshopForm');
+    const success = document.getElementById('workshopSuccess');
+
+    form.addEventListener('submit', async e => {
+      e.preventDefault();
+      const name  = document.getElementById('ws-name').value.trim();
+      const email = document.getElementById('ws-email').value.trim();
+      if (!name || !email) return;
+
+      const btn = form.querySelector('button[type="submit"]');
+      btn.textContent = 'Sending…';
+      btn.disabled = true;
+
+      // TODO: replace with your form backend
+      // e.g. fetch('https://formspree.io/f/YOUR_ID', { method: 'POST', body: new FormData(form) })
+      await new Promise(r => setTimeout(r, 800));
+
+      form.style.display = 'none';
+      success.style.display = 'block';
+      success.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+  </script>
+
+</body>
+</html>
