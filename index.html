@@ -803,7 +803,7 @@
               <li>what you are craving in this next chapter</li>
               <li>where you may have disconnected from yourself along the way</li>
             </ul>
-            <a class="ways__cta" href="#contact" aria-label="Book a Recalibration Conversation">Book a conversation <span class="ways__arrow" aria-hidden="true">→</span></a>
+            <a class="ways__cta" href="#contact" data-interest="conversation" aria-label="Book a Recalibration Conversation">Book a conversation <span class="ways__arrow" aria-hidden="true">→</span></a>
           </div>
         </article>
 
@@ -825,7 +825,7 @@
               <li>renewed perspective on leadership and success</li>
               <li>a sense of relief, grounding, and possibility</li>
             </ul>
-            <a class="ways__cta" href="#contact" aria-label="Enquire about a Leadership Reset Session">Enquire <span class="ways__arrow" aria-hidden="true">→</span></a>
+            <a class="ways__cta" href="#contact" data-interest="reset" aria-label="Enquire about a Leadership Reset Session">Enquire <span class="ways__arrow" aria-hidden="true">→</span></a>
           </div>
         </article>
 
@@ -842,7 +842,7 @@
             <p class="ways__copy">A carefully curated day for women over 40 navigating leadership, ambition, identity, and what comes next.</p>
             <p class="ways__copy">Not a conference. Not a workshop. Not a networking event. A space to slow down, reconnect with yourself, and explore a more sustainable way of leading.</p>
             <p class="ways__closing"><em>Join the waitlist for early access and first-session pricing.</em></p>
-            <a class="ways__cta" href="#" aria-label="Find out more about The Feminine Current">Find out more <span class="ways__arrow" aria-hidden="true">→</span></a>
+            <a class="ways__cta" href="#contact" data-interest="waitlist" aria-label="Find out more about The Feminine Current">Find out more <span class="ways__arrow" aria-hidden="true">→</span></a>
           </div>
         </article>
 
@@ -941,7 +941,7 @@
       <p class="contact-lead">Tell me a little about what you're working through. I'll read every message myself and get back to you personally.</p>
       <p class="contact-email-line">Or email <a href="mailto:rowena@reframd.co">rowena@reframd.co</a> directly.</p>
       <div class="contact-form-wrap">
-        <form id="contactForm" action="https://formspree.io/f/xrerbpze" method="POST" novalidate>
+        <form id="contactForm" action="https://formspree.io/f/xwvarkgb" method="POST" novalidate>
           <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
           <input type="hidden" name="_subject" value="New message from Reframd site">
           <div class="field">
@@ -954,6 +954,25 @@
             <input type="email" id="cf-email" name="email" required aria-required="true">
             <span class="field-error" aria-live="polite"></span>
           </div>
+          <fieldset class="contact-interests">
+            <legend>What can Rowena help you with? <span class="legend-hint">(tick all that apply)</span></legend>
+            <label class="checkbox">
+              <input type="checkbox" name="interest[]" value="General enquiry" id="cf-int-general">
+              <span>General enquiry</span>
+            </label>
+            <label class="checkbox">
+              <input type="checkbox" name="interest[]" value="Recalibration Conversation (complimentary 30 minutes)" id="cf-int-conversation">
+              <span>Recalibration Conversation — complimentary 30-minute call</span>
+            </label>
+            <label class="checkbox">
+              <input type="checkbox" name="interest[]" value="Leadership Reset Session" id="cf-int-reset">
+              <span>Leadership Reset Session</span>
+            </label>
+            <label class="checkbox">
+              <input type="checkbox" name="interest[]" value="Priority waitlist — The Feminine Current" id="cf-int-waitlist">
+              <span>Priority waitlist — The Feminine Current</span>
+            </label>
+          </fieldset>
           <div class="field">
             <label for="cf-message">Message</label>
             <textarea id="cf-message" name="message" rows="5" required aria-required="true"></textarea>
@@ -1031,6 +1050,15 @@
     const h = localStorage.getItem(STORAGE_HERO);
     if (h) applyHero(h, false);
   } catch(e){}
+
+  // Pre-check the matching interest box when a CTA with data-interest is clicked
+  document.querySelectorAll('a[data-interest]').forEach(a => {
+    a.addEventListener('click', () => {
+      const key = a.dataset.interest;
+      const box = document.getElementById('cf-int-' + key);
+      if (box) box.checked = true;
+    });
+  });
 
   // Smooth scroll for all internal anchor links
   document.querySelectorAll('a[href^="#"]').forEach(a => {
